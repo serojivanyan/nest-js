@@ -3,9 +3,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { UserModule } from './user/user.module';
 import { RoleModule } from './role/role.module';
-import { User } from 'src/user/entities/user.entity.js';
-import { Role } from 'src/role/entities/role.entity.js';
-import { UserRole } from 'src/role/entities/user-role.entity.js';
+import { AuthModule } from './auth/auth.module';
+
 
 @Module({
   imports: [
@@ -29,6 +28,7 @@ import { UserRole } from 'src/role/entities/user-role.entity.js';
     }),
     UserModule,
     RoleModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

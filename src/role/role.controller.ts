@@ -32,12 +32,12 @@ export class RoleController {
     return this.roleService.findAll();
   }
 
-  @ApiOperation({ summary: 'Find Role by id' })
-  @ApiResponse({ status: 200, type: [Role] })
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.roleService.findOne(+id);
-  }
+  // @ApiOperation({ summary: 'Find Role by id' })
+  // @ApiResponse({ status: 200, type: [Role] })
+  // @Get(':id')
+  // findOne(@Param('id') id: string) {
+  //   return this.roleService.findOne(+id);
+  // }
 
   @ApiOperation({ summary: 'Find Role by value' })
   @ApiResponse({ status: 200, type: [Role] })

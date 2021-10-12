@@ -8,18 +8,28 @@ import { Role } from './entities/role.entity.js';
 export class RoleService {
   constructor(@InjectModel(Role) private roleRepository: typeof Role) {}
   async create(createRoleDto: CreateRoleDto): Promise<Role> {
-    const role = await this.roleRepository.create(createRoleDto);
+    const creationData = {
+      ...createRoleDto,
+      name: createRoleDto.name.trim().toLocaleLowerCase(),
+    };
+    const role = await this.roleRepository.create(creationData);
     return role;
   }
 
-  findAll() {
-    return `This action returns all role`;
+  async findAll() {
+    const roles = await this.roleRepository.findAll();
+    return roles;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} role`;
+  // async findOne(id: number) {
+  //   const role = await this.roleRepository.findByPk(id);
+  //   console.log(role);
+  //   return role;
+  // }
+  async findByValue(value: string) {
+    const role = await this.roleRepository.findOne({ where: { name: value } });
+    return role;
   }
-  findByValue(value: string) {}
   update(id: number, updateRoleDto: UpdateRoleDto) {
     return `This action updates a #${id} role`;
   }
